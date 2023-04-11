@@ -22,20 +22,20 @@ plugin:hyprfocus {
 
 **variables:**
 
-`enabled`(yes/no) -> enable or disable the plugin
+`enabled` (yes/no) -> enable or disable the plugin
 
-`opacity`(float) -> opacity to during the flash's apex
+`opacity` (float) -> opacity to during the flash's apex
 
-`flash_in_bezier`(bezier) -> bezier curve for flash towards the opacity apex
+`flash_in_bezier` (bezier) -> bezier curve for flash towards the opacity apex
 
-`flash_out_bezier`(bezier) -> bezier curve for the flash towards default window opacity
+`flash_out_bezier` (bezier) -> bezier curve for the flash towards default window opacity
 
-`flash_in_speed`(float) -> flash towards opacity apex animation speed
+`flash_in_speed` (float) -> flash towards opacity apex animation speed
 
-`flash_out_speed`(float) -> flash towards default window opacity animation speed
+`flash_out_speed` (float) -> flash towards default window opacity animation speed
 
 
-hyprfocus can also flash the currently focused window:
+hyprfocus can also flash the currently focused window through the `flashwindow` dispatcher:
 ```
 bind = $mod, space, flashwindow
 ```
