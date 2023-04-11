@@ -1,10 +1,10 @@
 # hyprfocus
 
-an animation plugin for us borderless folks inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
+An animation plugin for us borderless folks inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
 ![preview](hyprfocus.gif)
 
-to use hyprfocus, add the plugin and add this to your config:
+To use hyprfocus, add the plugin and add this to your config:
 ```
 plugin:hyprfocus {
     enabled = yes
@@ -22,19 +22,19 @@ plugin:hyprfocus {
 ```
 
 
-**variables:**
+**Variables:**
 
-`enabled` (yes/no) -> enable or disable the plugin
+`enabled` (yes/no) -> Enable or disable the plugin
 
-`opacity` (float) -> opacity to during the flash's apex
+`opacity` (float) -> Opacity to during the flash's apex
 
-`flash_in_bezier` (bezier) -> bezier curve for flash towards the opacity apex
+`flash_in_bezier` (bezier) -> Bezier curve for flash towards the opacity apex
 
-`flash_out_bezier` (bezier) -> bezier curve for the flash towards default window opacity
+`flash_out_bezier` (bezier) -> Bezier curve for the flash towards default window opacity
 
-`flash_in_speed` (float) -> flash towards opacity apex animation speed
+`flash_in_speed` (float) -> Towards opacity apex animation speed
 
-`flash_out_speed` (float) -> flash towards default window opacity animation speed
+`flash_out_speed` (float) -> Towards default window opacity animation speed
 
 
 hyprfocus can also flash the currently focused window through the `flashwindow` dispatcher:
