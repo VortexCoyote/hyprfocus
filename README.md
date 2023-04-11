@@ -1,0 +1,2 @@
+# hyprfocus
+flashfocus for Hyprland
