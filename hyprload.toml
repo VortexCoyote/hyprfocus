@@ -1,0 +1,10 @@
+[hyprfocus]
+description = "flash-focus like plugin for Hyprland"
+version = "1.0.0"
+author = "Vortex"
+
+[hyprfocus.build]
+output = "hyprfocus.so"
+steps = [
+    "make all",
+]

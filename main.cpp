@@ -107,6 +107,4 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     return {"hyprfocus", "Flash windows on focus", "Vortex", "1.0"};
 }
 
-APICALL EXPORT void PLUGIN_EXIT() {
-   HyprlandAPI::invokeHyprctlCommand("seterror", "disable");
-}
+APICALL EXPORT void PLUGIN_EXIT() { }
