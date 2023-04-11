@@ -2,7 +2,7 @@
 
 an animation plugin for us borderless folks inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
-![image](https://i.ibb.co/kqHK8mz/hyprfocus.gif)
+![preview](https://i.ibb.co/kqHK8mz/hyprfocus.gif)
 
 to use hyprfocus, add the plugin and add this to your config:
 ```
