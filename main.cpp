@@ -8,11 +8,6 @@ inline HANDLE PHANDLE = nullptr;
 #include <src/Compositor.hpp>
 #include <src/managers/AnimationManager.hpp>
 
-typedef void (*origFocusWindow)(void*, CWindow*, wlr_surface*);
-
-CFunctionHook* g_pFocusWindowHook = nullptr;
-CWindow* g_pPreviouslyFocusedWindow = nullptr;
-
 SAnimationPropertyConfig g_FlashInAnimConfig;
 SAnimationPropertyConfig g_FlashOutAnimConfig;
 
@@ -55,22 +50,24 @@ void flashCurrentWindow(std::string) {
     flashWindow(g_pPreviouslyFocusedWindow);
 }
 
-void hkFocusWindow(void* thisptr, CWindow* pWindow, wlr_surface* pSurface) {
-    (*(origFocusWindow)g_pFocusWindowHook->m_pOriginal)(thisptr, pWindow, pSurface);
+static void onActiveWindowChange(void* self, std::any data) {
+    try {
+        auto* const PWINDOW = std::any_cast<CWindow*>(data);
+        static auto* const PHYPRFOCUSENABLED = &HyprlandAPI::getConfigValue(PHANDLE, "plugin:hyprfocus:enabled")->intValue;
 
-    static auto* const PHYPRFOCUSENABLED = &HyprlandAPI::getConfigValue(PHANDLE, "plugin:hyprfocus:enabled")->intValue;
+        if (!*PHYPRFOCUSENABLED)
+            return;
 
-    if (!*PHYPRFOCUSENABLED)
-        return;
+        if(PWINDOW == nullptr)
+            return;
 
-    if(pWindow == nullptr)
-        return;
+        if(PWINDOW == g_pPreviouslyFocusedWindow)
+            return;
 
-    if(pWindow == g_pPreviouslyFocusedWindow)
-        return;
+        flashWindow(PWINDOW);
+        g_pPreviouslyFocusedWindow = PWINDOW;
 
-    flashWindow(pWindow);
-    g_pPreviouslyFocusedWindow = pWindow;
+    } catch (std::bad_any_cast& e) { }
 }
 
 // Do NOT change this function.
@@ -91,7 +88,6 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:flash_out_speed", SConfigValue{.floatValue = 5.f});
 
     HyprlandAPI::reloadConfig();
-
     HyprlandAPI::addDispatcher(PHANDLE, "flashwindow", &flashCurrentWindow);
 
     g_FlashInAnimConfig = *(g_pConfigManager->getAnimationPropertyConfig("global"));
@@ -104,8 +100,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     g_FlashOutAnimConfig.internalStyle = "";
     g_FlashOutAnimConfig.pValues = &g_FlashOutAnimConfig;
 
-    g_pFocusWindowHook = HyprlandAPI::createFunctionHook(handle, (void*)&CCompositor::focusWindow, (void*)&hkFocusWindow);
-    g_pFocusWindowHook->hook();
+    HyprlandAPI::registerCallbackDynamic(PHANDLE, "activeWindow", [&](void* self, std::any data) { onActiveWindowChange(self, data); });
 
     return {"hyprfocus", "Flash windows on focus", "Vortex", "1.0"};
 }
