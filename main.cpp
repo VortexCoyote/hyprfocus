@@ -8,6 +8,8 @@ inline HANDLE PHANDLE = nullptr;
 #include <src/Compositor.hpp>
 #include <src/managers/AnimationManager.hpp>
 
+CWindow* g_pPreviouslyFocusedWindow = nullptr;
+
 SAnimationPropertyConfig g_FlashInAnimConfig;
 SAnimationPropertyConfig g_FlashOutAnimConfig;
 
