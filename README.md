@@ -2,6 +2,8 @@
 
 an animation plugin for us borderless folks inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
+![image](https://imgur.com/a/TM35Rnq))
+
 to use hyprfocus, add the plugin and add this to your config:
 ```
 plugin:hyprfocus {
