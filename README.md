@@ -4,8 +4,41 @@ An animation plugin for us borderless folks inspired by [flashfocus](https://git
 
 ![preview](hyprfocus.gif)
 
-To use hyprfocus, add the plugin and add this to your config:
+## compilation & installation
+
+instructions based on [the official wiki](https://wiki.hyprland.org/Plugins/Using-Plugins/#compiling-official-plugins)
+
+**1) clone hyprfocus and cd into it,** make sure you have `wlroots` installed as well
+
+`git clone https://github.com/VortexCoyote/hyprfocus && cd hyprfocus`
+
+**2) clone hyprland and cd into it**
+
+`git clone --recursive https://github.com/hyprwm/Hyprland && cd Hyprland`
+
+**3) checkout the correct release tag matching with your version of hyprland**
+
+`git checkout tags/v0.24.1`
+
+**4) prepare the hyprland source for plugin compilation**
+
+`make pluginenv`
+
+**5) cd back and make**
+
+`cd .. && HYPRLAND_HEADERS="Hyprland/" make`
+
+**6) profit,** make sure you use the full path to the .so file
+
+`hyprctl plugin load <full .so path>`
+
+
+## getting started
+
+to start using hyprfocus, add this to your hyprland config:
 ```
+hyprctl plugin load <full .so path>
+
 plugin:hyprfocus {
     enabled = yes
     opacity = 0.7
@@ -21,8 +54,7 @@ plugin:hyprfocus {
 }
 ```
 
-
-**Variables:**
+### variables
 
 `enabled` (yes/no) -> Enable or disable the plugin
 
