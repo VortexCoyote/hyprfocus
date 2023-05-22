@@ -1,12 +1,12 @@
  #define WLR_USE_UNSTABLE
 
-#include <src/plugins/PluginAPI.hpp>
+#include <hyprland/src/plugins/PluginAPI.hpp>
 
 inline HANDLE PHANDLE = nullptr;
 
-#include <src/Window.hpp>
-#include <src/Compositor.hpp>
-#include <src/managers/AnimationManager.hpp>
+#include <hyprland/src/Compositor.hpp>
+#include <hyprland/src/Window.hpp>
+#include <hyprland/src/managers/AnimationManager.hpp>
 
 CWindow* g_pPreviouslyFocusedWindow = nullptr;
 
