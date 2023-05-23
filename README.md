@@ -8,7 +8,7 @@ An animation plugin for us borderless folks inspired by [flashfocus](https://git
 
 instructions based on [the official wiki](https://wiki.hyprland.org/Plugins/Using-Plugins/#compiling-official-plugins)
 
-**1) clone hyprfocus and cd into it,** make sure you have `wlroots` installed as well
+**1) clone hyprfocus and cd into it,**
 
 `git clone https://github.com/VortexCoyote/hyprfocus && cd hyprfocus`
 
@@ -18,20 +18,21 @@ instructions based on [the official wiki](https://wiki.hyprland.org/Plugins/Usin
 
 **3) checkout the correct release tag matching with your version of hyprland**
 
-`git checkout tags/v0.24.1`
+`git checkout tags/v0.25.0`
 
 **4) prepare the hyprland source for plugin compilation**
 
-`make pluginenv`
+`sudo make pluginenv`
 
 **5) cd back and make**
 
-`cd .. && HYPRLAND_HEADERS="Hyprland/" make`
+`cd .. && make all`
 
 **6) profit,** make sure you use the full path to the .so file
 
 `hyprctl plugin load <full .so path>`
 
+**If you compile hyprland manually and install with `sudo make install` you can skip the cloning hyprland sources and `make pluginenv` part.**
 
 ## getting started
 
