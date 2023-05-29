@@ -74,3 +74,7 @@ hyprfocus can also flash the currently focused window through the `flashwindow` 
 ```
 bind = $mod, space, flashwindow
 ```
+
+## future plans
+
+I'm mostly planning on implementing more animations, for example a popin-popout bounce animation. But if you have any suggestions, feel free to create a git issue!
