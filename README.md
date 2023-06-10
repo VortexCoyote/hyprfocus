@@ -2,7 +2,13 @@
 
 a plugin which provides focus animations for us borderless folks, originally inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
-![preview](hyprfocus.gif)
+## animations
+
+flash
+![preview](flash.gif)
+
+shrink
+![preview](shrink.gif)
 
 ## compilation & installation
 
@@ -112,5 +118,5 @@ plugin:hyprfocus {
 
 hyprfocus can also flash the currently focused window through the `flashwindow` dispatcher:
 ```
-bind = $mod, space, flashwindow
+bind = $mod, space, animatefocused
 ```
