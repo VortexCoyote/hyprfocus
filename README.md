@@ -51,8 +51,8 @@ plugin = <full .so path>
 plugin:hyprfocus {
     enabled = yes
 
-    tiled_animation = shrink
-    floating_animation = flash
+    keyboard_focus_animation = shrink
+    mouse_focus_animation = flash
 
     bezier = bezIn, 0.5,0.0,1.0,0.5
     bezier = bezOut, 0.0,0.5,0.5,1.0
