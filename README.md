@@ -118,7 +118,7 @@ plugin:hyprfocus {
 
 ### dispatching
 
-hyprfocus can also flash the currently focused window through the `flashwindow` dispatcher:
+hyprfocus can also flash the currently focused window through the `animatefocused` dispatcher:
 ```
 bind = $mod, space, animatefocused
 ```
