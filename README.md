@@ -81,7 +81,7 @@ plugin:hyprfocus {
 
 ### plugin configuration 
 
-`enabled` (yes/no) -> Enable or disable the plugin
+`enabled` (yes/no) -> enable or disable the plugin
 
 `keyboard_focus_animation` (flash/shrink/nothing) -> animation for keyboard-driven focus
 
