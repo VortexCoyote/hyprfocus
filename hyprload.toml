@@ -1,6 +1,6 @@
 [hyprfocus]
-description = "flash-focus like plugin for Hyprland"
-version = "1.0.0"
+description = "a plugin which provides focus animations for us borderless folks, originally inspired by flashfocus"
+version = "2.0"
 author = "Vortex"
 
 [hyprfocus.build]
