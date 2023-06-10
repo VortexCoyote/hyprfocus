@@ -108,7 +108,7 @@ plugin:hyprfocus {
 
 `shrink_percentage` (float) -> the amount a window has shrunk during the animation's apex
 
-### hyprctl
+### dispatching
 
 hyprfocus can also flash the currently focused window through the `flashwindow` dispatcher:
 ```
