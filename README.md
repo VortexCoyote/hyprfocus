@@ -1,6 +1,6 @@
 # hyprfocus
 
-An animation plugin for us borderless folks inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
+a plugin which provides focus animations for us borderless folks, originally inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
 ![preview](hyprfocus.gif)
 
