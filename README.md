@@ -81,9 +81,9 @@ plugin:hyprfocus {
 
 `enabled` (yes/no) -> Enable or disable the plugin
 
-`tiled_animation` (flash/shrink/nothing) -> focus animation for tiled windows
+`keyboard_focus_animation` (flash/shrink/nothing) -> animation for keyboard-driven focus
 
-`floating_animation` (flash/shrink/nothing) -> focus animation for floating windows
+`mouse_focus_animation` (flash/shrink/nothing) -> animation for mouse pressed focus (setting `input:follow_mouse` to `0` is recommended)
 
 ### animations configuration
 
