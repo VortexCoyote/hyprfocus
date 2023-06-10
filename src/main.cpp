@@ -16,7 +16,9 @@ CWindow* g_pPreviouslyFocusedWindow = nullptr;
 std::unordered_map<std::string, std::unique_ptr<IFocusAnimation>> g_mAnimations;
 
 void flashWindow(CWindow* pWindow) {
-    static auto* const PTYPE = &HyprlandAPI::getConfigValue(PHANDLE, "plugin:hyprfocus:type")->strValue;
+    auto* const PTYPE = pWindow->m_bIsFloating ? &HyprlandAPI::getConfigValue(PHANDLE, "plugin:hyprfocus:floating_animation")->strValue
+                                               : &HyprlandAPI::getConfigValue(PHANDLE, "plugin:hyprfocus:tiled_animation")->strValue;
+
     g_mAnimations[*PTYPE]->onWindowFocus(pWindow, PHANDLE);
 }
 
@@ -60,29 +62,25 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
 APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     PHANDLE = handle;    
 
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:type", SConfigValue{.strValue = "flash"});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:enabled", SConfigValue{.intValue   = 0   });
-
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:animate_in_bezier",  SConfigValue{.strValue = "default"});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:animate_out_bezier", SConfigValue{.strValue = "default"});
-
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:animate_in_speed",  SConfigValue{.floatValue = 1.f});
-    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:animate_out_speed", SConfigValue{.floatValue = 5.f});
-
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:enabled",             SConfigValue{.intValue = 0      });
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:tiled_animation",     SConfigValue{.strValue = "flash"});
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:floating_animation",  SConfigValue{.strValue = "flash"});
+    
     HyprlandAPI::addDispatcher(PHANDLE, "animatefocused", &flashCurrentWindow);
 
-    g_mAnimations["flash"] = std::make_unique<CFlash>();
-    g_mAnimations["shrink"] = std::make_unique<CShrink>();
+    g_mAnimations["flash"   ] = std::make_unique<CFlash>();
+    g_mAnimations["shrink"  ] = std::make_unique<CShrink>();
+    g_mAnimations["nothing" ] = std::make_unique<IFocusAnimation>();
 
     for(auto& [name, pAnimation] :  g_mAnimations) {
-        pAnimation->init(PHANDLE);
+        pAnimation->init(PHANDLE, name);
     }
 
     HyprlandAPI::reloadConfig();
 
     HyprlandAPI::registerCallbackDynamic(PHANDLE, "activeWindow", [&](void* self, std::any data) { onActiveWindowChange(self, data); });
 
-    return {"hyprfocus", "Flash windows on focus", "Vortex", "1.0"};
+    return {"hyprfocus", "animate windows on focus", "Vortex", "2.0"};
 }
 
 APICALL EXPORT void PLUGIN_EXIT() { }

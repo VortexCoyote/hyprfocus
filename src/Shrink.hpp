@@ -1,16 +1,11 @@
 #pragma once
 
-#include "FocusAnimation.hpp"
-
-#include <hyprland/src/config/ConfigManager.hpp>
+#include "IFocusAnimation.hpp"
 
 class CShrink : public IFocusAnimation {
 public:
-    virtual void onWindowFocus(CWindow* pWindow, HANDLE pHandle); 
-    virtual void init(HANDLE pHandle);
-
-    SAnimationPropertyConfig m_sFlashInAnimConfig;
-    SAnimationPropertyConfig m_sFlashOutAnimConfig;
+    void onWindowFocus(CWindow* pWindow, HANDLE pHandle) override; 
+    void init(HANDLE pHandle, std::string animationName) override;
 
     CAnimatedVariable m_sShrinkAnimation;
 };
