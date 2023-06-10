@@ -5,9 +5,11 @@ a plugin which provides focus animations for us borderless folks, originally ins
 ## animations
 
 flash
+
 ![preview](flash.gif)
 
 shrink
+
 ![preview](shrink.gif)
 
 ## compilation & installation
