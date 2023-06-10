@@ -85,7 +85,7 @@ plugin:hyprfocus {
 
 `keyboard_focus_animation` (flash/shrink/nothing) -> animation for keyboard-driven focus
 
-`mouse_focus_animation` (flash/shrink/nothing) -> animation for mouse pressed focus (setting `input:follow_mouse` to `0` is recommended)
+`mouse_focus_animation` (flash/shrink/nothing) -> animation for mouse pressed focus (setting input:follow_mouse to 0 is recommended)
 
 ### animations configuration
 
