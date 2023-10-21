@@ -89,8 +89,8 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
 
     HyprlandAPI::reloadConfig();
 
-    HyprlandAPI::registerCallbackDynamic(PHANDLE, "activeWindow",    [&](void* self, std::any data) { onActiveWindowChange(self, data); });
-    HyprlandAPI::registerCallbackDynamic(PHANDLE, "mouseButton",     [&](void* self, std::any data) { onMouseButton       (self, data); });
+    HyprlandAPI::registerCallbackDynamic(PHANDLE, "activeWindow",    [&](void* self, SCallbackInfo& info, std::any data) { onActiveWindowChange(self, data); });
+    HyprlandAPI::registerCallbackDynamic(PHANDLE, "mouseButton",     [&](void* self, SCallbackInfo& info, std::any data) { onMouseButton       (self, data); });
 
     return {"hyprfocus", "animate windows on focus", "Vortex", "2.0"};
 }

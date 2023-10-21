@@ -30,7 +30,7 @@ instructions based on [the official wiki](https://wiki.hyprland.org/Plugins/Usin
 
 **4) prepare the hyprland source for plugin compilation**
 
-`sudo make pluginenv`
+`make all && sudo make installheaders`
 
 **5) cd back and make**
 
