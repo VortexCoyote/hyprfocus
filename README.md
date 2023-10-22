@@ -2,6 +2,8 @@
 
 a plugin which provides focus animations for us borderless folks, originally inspired by [flashfocus](https://github.com/fennerm/flashfocus)!
 
+i'm on a tight schedule, so pull requests are welcome!
+
 ## animations
 
 flash
