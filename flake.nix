@@ -36,7 +36,7 @@
 
             meta = with pkgs.lib; {
               homepage = "https://github.com/VortexCoyote/hyprfocus";
-              description = "A hyprland plugin which provides focus animations for us borderless folks.";
+              description = "a focus animation plugin for Hyprland inspired by Flashfocus";
               license = licenses.bsd3;
               platforms = platforms.linux;
             };
