@@ -31,7 +31,8 @@
             ++ hyprland.packages.${system}.hyprland.buildInputs;
 
             installPhase = ''
-              install ./hyprfocus.so $out
+              mkdir -p $out/lib
+              install ./hyprfocus.so $out/lib/libhyprfocus.so
             '';
 
             meta = with pkgs.lib; {
