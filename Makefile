@@ -1,6 +1,8 @@
-SOURCE_FILES=$(wildcard src/*.cpp src/*.hpp)
+SOURCE_FILES=$(wildcard src/*.cpp)
 
 all:
-	$(CXX) -shared -fPIC --no-gnu-unique $(SOURCE_FILES)  -o hyprfocus.so -g `pkg-config --cflags pixman-1 libdrm hyprland` -std=c++2b
+	$(CXX) -O2 -shared -fPIC --no-gnu-unique $(SOURCE_FILES)  -o hyprfocus.so `pkg-config --cflags pixman-1 libdrm hyprland` -std=c++2b
+	strip hyprfocus.so
+
 clean:
 	rm ./hyprfocus.so
