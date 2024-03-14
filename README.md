@@ -18,7 +18,28 @@ shrink
 
 instructions based on [the official wiki](https://wiki.hyprland.org/Plugins/Using-Plugins/#compiling-official-plugins)
 
-**1) clone hyprfocus and cd into it,**
+### hyprpm
+
+**1) add hyprfocus**
+
+`hyprpm add https://github.com/VortexCoyote/hyprfocus`
+
+**2) verify that it's installed**
+
+`hyprpm list`
+
+**3) enable it and reload**
+
+`hyprpm enable hyprfocus && hyprpm reload`
+
+**4) (OPTIONAL) make sure plugins are loaded at startup**
+
+this goes into you hyprland config: 
+```exec-once = hyprpm reload -n```
+
+### manual
+
+**1) clone hyprfocus and cd into it**
 
 `git clone https://github.com/VortexCoyote/hyprfocus && cd hyprfocus`
 
